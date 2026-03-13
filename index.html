@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deepika Eye Care Hospital | Sriperumbudur</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0a4d8c;
+    --primary-light: #1a6ec7;
+    --accent: #00b4d8;
+    --accent2: #90e0ef;
+    --gold: #d4a017;
+    --bg: #f0f6ff;
+    --bg2: #e2eefa;
+    --card: #ffffff;
+    --text: #0d1b2a;
+    --text2: #3a5068;
+    --border: #c5daf0;
+    --shadow: 0 8px 40px rgba(10,77,140,0.10);
+    --radius: 18px;
+    --nav-bg: rgba(240,246,255,0.96);
+  }
+  [data-theme="dark"] {
+    --primary: #4fa3e8;
+    --primary-light: #7bbff5;
+    --accent: #00b4d8;
+    --accent2: #0077a8;
+    --gold: #f0c040;
+    --bg: #0c1a2e;
+    --bg2: #0f2440;
+    --card: #122847;
+    --text: #e4f0ff;
+    --text2: #93b8d8;
+    --border: #1e3d60;
+    --shadow: 0 8px 40px rgba(0,0,0,0.35);
+    --nav-bg: rgba(12,26,46,0.97);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:1000;
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    transition: all 0.3s;
+  }
+  .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .nav-logo .eye-icon {
+    width: 44px; height:44px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; flex-shrink:0;
+  }
+  .nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+  .nav-logo-text strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight:700;
+    color: var(--primary);
+  }
+  .nav-logo-text span { font-size:0.65rem; color:var(--text2); letter-spacing:0.08em; text-transform:uppercase; }
+  .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+  .nav-links a { text-decoration:none; color:var(--text2); font-size:0.88rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--primary); }
+  .nav-right { display:flex; align-items:center; gap:12px; }
+  .btn-appt {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color:#fff; border:none; padding:9px 20px; border-radius:50px;
+    font-family:'DM Sans',sans-serif; font-size:0.85rem; font-weight:600;
+    cursor:pointer; text-decoration:none; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(10,77,140,0.3);
+  }
+  .btn-appt:hover { transform:translateY(-2px); box-shadow:0 6px 22px rgba(10,77,140,0.4); }
+  .theme-toggle {
+    background: var(--bg2); border: 1px solid var(--border);
+    color:var(--text); width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:17px; transition:all 0.2s;
+  }
+  .theme-toggle:hover { background:var(--primary); color:#fff; }
+  .hamburger { display:none; background:none; border:none; cursor:pointer; padding:5px; }
+  .hamburger span {
+    display:block; width:24px; height:2px; background:var(--text);
+    margin:5px 0; border-radius:2px; transition:0.3s;
+  }
+  .mobile-menu {
+    display:none; position:fixed; top:70px; left:0; right:0;
+    background:var(--nav-bg); backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    padding:20px 5%; flex-direction:column; gap:16px;
+    z-index: 999;
+  }
+  .mobile-menu.open { display:flex; }
+  .mobile-menu a { text-decoration:none; color:var(--text2); font-weight:500; font-size:1rem; padding:8px 0; border-bottom:1px solid var(--border); }
+  .mobile-menu .btn-appt { text-align:center; margin-top:8px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e8f3ff 0%, #c8e2fa 40%, #a3d4f7 100%);
+    display:flex; align-items:center;
+    padding: 100px 5% 60px;
+    position:relative; overflow:hidden;
+  }
+  [data-theme="dark"] .hero {
+    background: linear-gradient(135deg, #0c1a2e 0%, #0d2545 50%, #0a3060 100%);
+  }
+  .hero::before {
+    content:''; position:absolute; top:-80px; right:-80px;
+    width: 500px; height:500px;
+    background: radial-gradient(circle, rgba(0,180,216,0.18) 0%, transparent 70%);
+    border-radius:50%; pointer-events:none;
+  }
+  .hero::after {
+    content:''; position:absolute; bottom:-100px; left:-60px;
+    width: 400px; height:400px;
+    background: radial-gradient(circle, rgba(10,77,140,0.12) 0%, transparent 70%);
+    border-radius:50%; pointer-events:none;
+  }
+  .hero-content { max-width:600px; z-index:1; }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background: rgba(10,77,140,0.08); border:1px solid rgba(10,77,140,0.2);
+    border-radius:50px; padding:6px 16px; margin-bottom:24px;
+    font-size:0.78rem; font-weight:600; color:var(--primary); text-transform:uppercase; letter-spacing:0.06em;
+  }
+  [data-theme="dark"] .hero-badge { background:rgba(79,163,232,0.1); border-color:rgba(79,163,232,0.25); }
+  .hero h1 {
+    font-family:'Cormorant Garamond',serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight:700; line-height:1.1; margin-bottom:20px; color:var(--primary);
+  }
+  .hero h1 em { font-style:italic; color:var(--accent); }
+  .hero p { font-size:1.05rem; color:var(--text2); line-height:1.7; margin-bottom:36px; max-width:480px; }
+  .hero-ctas { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:40px; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color:#fff; border:none; padding:14px 28px; border-radius:50px;
+    font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:600;
+    cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 20px rgba(10,77,140,0.3);
+  }
+  .btn-primary:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(10,77,140,0.4); }
+  .btn-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color:#fff; border:none; padding:14px 28px; border-radius:50px;
+    font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:600;
+    cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.3);
+  }
+  .btn-whatsapp:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(37,211,102,0.4); }
+  .btn-call {
+    background: var(--card); border:2px solid var(--primary);
+    color:var(--primary); padding:14px 28px; border-radius:50px;
+    font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:600;
+    cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    transition: all 0.2s;
+  }
+  .btn-call:hover { background:var(--primary); color:#fff; }
+  .hero-stats { display:flex; gap:32px; flex-wrap:wrap; }
+  .stat { display:flex; flex-direction:column; }
+  .stat-num {
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.2rem; font-weight:700; color:var(--primary); line-height:1;
+  }
+  .stat-label { font-size:0.8rem; color:var(--text2); margin-top:4px; }
+  .hero-visual {
+    position:absolute; right:5%; top:50%; transform:translateY(-50%);
+    width: clamp(280px, 38vw, 520px);
+    z-index:1;
+  }
+  .hero-card {
+    background:var(--card); border-radius:24px;
+    padding:28px; box-shadow: 0 20px 60px rgba(10,77,140,0.15);
+    border:1px solid var(--border);
+    animation: floatCard 4s ease-in-out infinite;
+  }
+  @keyframes floatCard {
+    0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)}
+  }
+  .hero-card-title {
+    font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:700; color:var(--primary); margin-bottom:16px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hours-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border); font-size:0.87rem; }
+  .hours-row:last-child { border-bottom:none; }
+  .hours-day { font-weight:600; color:var(--text); }
+  .hours-time { color:var(--text2); }
+  .open-badge {
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    color:#fff; font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.04em;
+  }
+  .closed-badge {
+    background:#f1f5f9; color:#94a3b8; font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:20px;
+  }
+  [data-theme="dark"] .closed-badge { background:#1e3d60; color:#4a6a8a; }
+
+  /* ===== TICKER ===== */
+  .ticker-wrap {
+    background:linear-gradient(90deg, var(--primary), var(--accent));
+    padding:11px 0; overflow:hidden; position:relative;
+  }
+  .ticker-track {
+    display:flex; gap:60px; white-space:nowrap;
+    animation: ticker 30s linear infinite;
+  }
+  .ticker-item {
+    color:#fff; font-size:0.82rem; font-weight:500; letter-spacing:0.04em;
+    display:inline-flex; align-items:center; gap:10px; flex-shrink:0;
+  }
+  .ticker-dot { width:5px; height:5px; background:rgba(255,255,255,0.6); border-radius:50%; }
+  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ===== SECTIONS ===== */
+  section { padding:80px 5%; }
+  .section-tag {
+    display:inline-block; background:rgba(10,77,140,0.08);
+    color:var(--primary); font-size:0.75rem; font-weight:700; letter-spacing:0.1em;
+    text-transform:uppercase; padding:5px 14px; border-radius:50px; margin-bottom:14px;
+    border:1px solid rgba(10,77,140,0.15);
+  }
+  [data-theme="dark"] .section-tag { background:rgba(79,163,232,0.1); border-color:rgba(79,163,232,0.2); }
+  .section-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight:700; color:var(--text); line-height:1.2; margin-bottom:14px;
+  }
+  .section-title span { color:var(--primary); }
+  .section-sub { color:var(--text2); font-size:1rem; line-height:1.7; max-width:540px; }
+  .section-header { margin-bottom:48px; }
+
+  /* ===== ABOUT ===== */
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .about-img-wrap {
+    position:relative; border-radius:24px; overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .about-img-bg {
+    background: linear-gradient(135deg, #daeeff, #b3d9f7);
+    height:380px; border-radius:24px;
+    display:flex; align-items:center; justify-content:center; font-size:7rem;
+    position:relative; overflow:hidden;
+  }
+  [data-theme="dark"] .about-img-bg { background:linear-gradient(135deg, #0d2545, #1a3a60); }
+  .about-img-bg::before {
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 40%, rgba(0,180,216,0.15), transparent 60%);
+  }
+  .about-float-badge {
+    position:absolute; bottom:-10px; right:20px;
+    background:var(--primary); color:#fff;
+    padding:14px 20px; border-radius:16px;
+    font-size:0.85rem; font-weight:600;
+    box-shadow:0 8px 24px rgba(10,77,140,0.35);
+    text-align:center;
+  }
+  .about-float-badge strong { display:block; font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:700; }
+  .about-features { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px; }
+  .about-feat {
+    background:var(--bg2); border-radius:14px; padding:16px;
+    display:flex; align-items:flex-start; gap:12px;
+    border:1px solid var(--border); transition:all 0.2s;
+  }
+  .about-feat:hover { transform:translateY(-3px); box-shadow:var(--shadow); }
+  .feat-icon { font-size:1.5rem; flex-shrink:0; }
+  .feat-text strong { display:block; font-size:0.9rem; font-weight:600; color:var(--text); margin-bottom:3px; }
+  .feat-text span { font-size:0.8rem; color:var(--text2); }
+
+  /* ===== SERVICES ===== */
+  .services-bg { background:var(--bg2); }
+  .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+  .service-card {
+    background:var(--card); border-radius:var(--radius);
+    padding:28px 24px; border:1px solid var(--border);
+    transition:all 0.3s; cursor:default; position:relative; overflow:hidden;
+  }
+  .service-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg, var(--primary), var(--accent));
+    transform:scaleX(0); transition:transform 0.3s; transform-origin:left;
+  }
+  .service-card:hover { transform:translateY(-6px); box-shadow:var(--shadow); }
+  .service-card:hover::before { transform:scaleX(1); }
+  .service-icon { font-size:2.4rem; margin-bottom:14px; display:block; }
+  .service-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:700; color:var(--text); margin-bottom:8px; }
+  .service-card p { font-size:0.85rem; color:var(--text2); line-height:1.6; }
+
+  /* ===== DOCTORS ===== */
+  .doctors-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; }
+  .doctor-card {
+    background:var(--card); border-radius:var(--radius);
+    overflow:hidden; border:1px solid var(--border);
+    transition:all 0.3s; text-align:center;
+  }
+  .doctor-card:hover { transform:translateY(-6px); box-shadow:var(--shadow); }
+  .doctor-avatar {
+    background:linear-gradient(135deg, #daeeff, #b3d9f7);
+    height:160px; display:flex; align-items:center; justify-content:center;
+    font-size:5rem; position:relative;
+  }
+  [data-theme="dark"] .doctor-avatar { background:linear-gradient(135deg,#0d2545,#1a3a60); }
+  .doctor-info { padding:20px; }
+  .doctor-info h3 { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:700; color:var(--text); margin-bottom:4px; }
+  .doctor-spec { font-size:0.83rem; color:var(--primary); font-weight:600; margin-bottom:8px; }
+  .doctor-exp { font-size:0.8rem; color:var(--text2); }
+
+  /* ===== APPOINTMENT ===== */
+  .appt-bg { background:linear-gradient(135deg, #0a4d8c, #0077a8); position:relative; overflow:hidden; }
+  .appt-bg::before {
+    content:''; position:absolute; top:-100px; right:-100px;
+    width:400px; height:400px; border-radius:50%;
+    background:rgba(255,255,255,0.05);
+  }
+  .appt-bg::after {
+    content:''; position:absolute; bottom:-80px; left:-80px;
+    width:350px; height:350px; border-radius:50%;
+    background:rgba(0,180,216,0.1);
+  }
+  .appt-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1; }
+  .appt-info .section-title { color:#fff; }
+  .appt-info .section-sub { color:rgba(255,255,255,0.75); }
+  .appt-contact-btns { display:flex; flex-direction:column; gap:14px; margin-top:30px; }
+  .appt-btn-contact {
+    display:flex; align-items:center; gap:14px;
+    background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+    border-radius:14px; padding:16px 20px; text-decoration:none; color:#fff;
+    transition:all 0.2s; backdrop-filter:blur(8px);
+  }
+  .appt-btn-contact:hover { background:rgba(255,255,255,0.18); transform:translateX(5px); }
+  .appt-btn-contact .icon { font-size:1.8rem; }
+  .appt-btn-contact .label { font-size:0.75rem; opacity:0.7; text-transform:uppercase; letter-spacing:0.06em; }
+  .appt-btn-contact .value { font-size:1rem; font-weight:600; margin-top:2px; }
+  .appt-form {
+    background:var(--card); border-radius:24px;
+    padding:36px; box-shadow:0 20px 60px rgba(0,0,0,0.2);
+  }
+  .appt-form h3 {
+    font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:700;
+    color:var(--text); margin-bottom:24px;
+  }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form-group { margin-bottom:16px; }
+  .form-group label { display:block; font-size:0.82rem; font-weight:600; color:var(--text2); margin-bottom:7px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width:100%; background:var(--bg2); border:1px solid var(--border);
+    border-radius:10px; padding:11px 14px; font-family:'DM Sans',sans-serif;
+    font-size:0.9rem; color:var(--text); outline:none;
+    transition:border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color:var(--primary); box-shadow:0 0 0 3px rgba(10,77,140,0.1);
+  }
+  .form-group textarea { resize:vertical; min-height:80px; }
+  .form-submit {
+    width:100%; background:linear-gradient(135deg, var(--primary), var(--accent));
+    color:#fff; border:none; padding:14px; border-radius:50px;
+    font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600;
+    cursor:pointer; transition:all 0.2s;
+    box-shadow:0 6px 20px rgba(10,77,140,0.3);
+  }
+  .form-submit:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(10,77,140,0.4); }
+
+  /* ===== REVIEWS ===== */
+  .reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; }
+  .review-card {
+    background:var(--card); border-radius:var(--radius); padding:24px;
+    border:1px solid var(--border); transition:all 0.3s;
+    position:relative;
+  }
+  .review-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+  .review-stars { color:#f59e0b; font-size:1rem; margin-bottom:12px; }
+  .review-text { font-size:0.9rem; color:var(--text2); line-height:1.7; margin-bottom:16px; font-style:italic; }
+  .review-author { display:flex; align-items:center; gap:10px; }
+  .review-avatar {
+    width:38px; height:38px; border-radius:50%;
+    background:linear-gradient(135deg, var(--primary), var(--accent));
+    display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:0.9rem;
+    flex-shrink:0;
+  }
+  .review-author-name { font-weight:600; font-size:0.88rem; color:var(--text); }
+  .review-author-date { font-size:0.77rem; color:var(--text2); }
+  .review-badge {
+    position:absolute; top:16px; right:16px;
+    background:linear-gradient(135deg,#0a4d8c,#00b4d8);
+    color:#fff; font-size:0.68rem; font-weight:700; padding:3px 10px; border-radius:20px;
+  }
+
+  /* ===== INFO STRIP ===== */
+  .info-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0; background:var(--card); }
+  .info-item {
+    padding:30px 24px; border-right:1px solid var(--border);
+    display:flex; gap:16px; align-items:flex-start;
+  }
+  .info-item:last-child { border-right:none; }
+  .info-icon {
+    width:48px; height:48px; border-radius:12px;
+    background:linear-gradient(135deg, rgba(10,77,140,0.1), rgba(0,180,216,0.1));
+    display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;
+    border:1px solid var(--border);
+  }
+  .info-item h4 { font-size:0.82rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text2); margin-bottom:5px; font-weight:600; }
+  .info-item p { font-size:0.92rem; color:var(--text); font-weight:500; line-height:1.5; }
+  .info-item a { color:var(--primary); text-decoration:none; font-weight:600; }
+  .info-item a:hover { text-decoration:underline; }
+
+  /* ===== MAP ===== */
+  .map-section { background:var(--bg2); padding:60px 5%; }
+  .map-wrap {
+    border-radius:24px; overflow:hidden; box-shadow:var(--shadow);
+    border:1px solid var(--border); height:380px;
+  }
+  .map-wrap iframe { width:100%; height:100%; border:none; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: linear-gradient(135deg, #061929, #0a2a4a);
+    color:rgba(255,255,255,0.75); padding:60px 5% 30px;
+  }
+  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+  .footer-brand .nav-logo-text strong { color:#fff; }
+  .footer-brand .nav-logo-text span { color:rgba(255,255,255,0.5); }
+  .footer-brand p { font-size:0.87rem; line-height:1.7; margin-top:14px; color:rgba(255,255,255,0.6); }
+  .footer-col h4 { color:#fff; font-size:0.88rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; }
+  .footer-col a, .footer-col p { display:block; font-size:0.85rem; color:rgba(255,255,255,0.6); text-decoration:none; margin-bottom:9px; line-height:1.5; }
+  .footer-col a:hover { color:#fff; }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .footer-bottom p { font-size:0.82rem; color:rgba(255,255,255,0.45); }
+  .footer-social { display:flex; gap:10px; }
+  .social-btn {
+    width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.1);
+    display:flex; align-items:center; justify-content:center; font-size:0.9rem;
+    text-decoration:none; color:rgba(255,255,255,0.7); transition:all 0.2s;
+  }
+  .social-btn:hover { background:var(--accent); color:#fff; }
+
+  /* ===== FLOATING BUTTONS ===== */
+  .floating-btns {
+    position:fixed; bottom:24px; right:24px; z-index:900;
+    display:flex; flex-direction:column; gap:12px; align-items:flex-end;
+  }
+  .float-btn {
+    display:flex; align-items:center; gap:10px;
+    padding:12px 18px; border-radius:50px; color:#fff;
+    text-decoration:none; font-weight:600; font-size:0.85rem;
+    box-shadow:0 6px 24px rgba(0,0,0,0.2);
+    transition:all 0.2s;
+  }
+  .float-btn:hover { transform:scale(1.05); }
+  .float-wa { background:#25D366; }
+  .float-call { background:var(--primary); }
+  .float-btn-icon { font-size:1.2rem; }
+
+  /* ===== SUCCESS MESSAGE ===== */
+  .success-msg {
+    display:none; background:#dcfce7; border:1px solid #86efac;
+    border-radius:12px; padding:14px 18px; text-align:center;
+    color:#166534; font-weight:600; font-size:0.9rem; margin-top:14px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:960px) {
+    .hero-visual { display:none; }
+    .about-grid, .appt-grid { grid-template-columns:1fr; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+  }
+  @media(max-width:720px) {
+    .nav-links { display:none; }
+    .btn-appt.desktop { display:none; }
+    .hamburger { display:block; }
+    .hero { padding:90px 5% 50px; }
+    .hero-ctas { flex-direction:column; }
+    .hero-ctas a { text-align:center; justify-content:center; }
+    .hero-stats { gap:20px; }
+    .form-row { grid-template-columns:1fr; }
+    .info-strip { grid-template-columns:1fr; }
+    .info-item { border-right:none; border-bottom:1px solid var(--border); }
+    .info-item:last-child { border-bottom:none; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .floating-btns { bottom:16px; right:16px; }
+    .float-btn span { display:none; }
+    .float-btn { padding:14px; }
+  }
+  @media(max-width:480px) {
+    .footer-grid { grid-template-columns:1fr; }
+    .footer-bottom { flex-direction:column; text-align:center; }
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .fade-in {
+    opacity:0; transform:translateY(24px);
+    animation:fadeInUp 0.7s ease forwards;
+  }
+  @keyframes fadeInUp { to{opacity:1; transform:translateY(0)} }
+  .fade-in:nth-child(2){animation-delay:0.1s}
+  .fade-in:nth-child(3){animation-delay:0.2s}
+  .fade-in:nth-child(4){animation-delay:0.3s}
+  .fade-in:nth-child(5){animation-delay:0.4s}
+  .fade-in:nth-child(6){animation-delay:0.5s}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="eye-icon">👁️</div>
+    <div class="nav-logo-text">
+      <strong>Deepika Eye Care</strong>
+      <span>Hospital · Est. 1994</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#doctors">Doctors</a></li>
+    <li><a href="#appointment">Book Appointment</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme" id="themeBtn">🌙</button>
+    <a href="#appointment" class="btn-appt desktop">Book Appointment</a>
+    <button class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#doctors" onclick="closeMenu()">Doctors</a>
+  <a href="#appointment" onclick="closeMenu()">Book Appointment</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="tel:+919444012443" class="btn-appt">📞 Call Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">⭐ 4.7 Rating · 1,494+ Reviews</div>
+    <h1 class="fade-in">Your <em>Vision</em>,<br>Our Mission</h1>
+    <p class="fade-in">Deepika Eye Care Hospital — Sriperumbudur's most trusted eye specialist for 31 years. Advanced treatments, compassionate care, and affordable packages.</p>
+    <div class="hero-ctas fade-in">
+      <a href="#appointment" class="btn-primary">📅 Book Appointment</a>
+      <a href="https://wa.me/919444012443?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Deepika%20Eye%20Care%20Hospital." class="btn-whatsapp" target="_blank">💬 WhatsApp Us</a>
+      <a href="tel:+919444012443" class="btn-call">📞 Call Now</a>
+    </div>
+    <div class="hero-stats fade-in">
+      <div class="stat"><span class="stat-num">31+</span><span class="stat-label">Years of Excellence</span></div>
+      <div class="stat"><span class="stat-num">1494+</span><span class="stat-label">Happy Patients</span></div>
+      <div class="stat"><span class="stat-num">4.7★</span><span class="stat-label">Justdial Rating</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hero-card-title">🕐 Today's Hours</div>
+      <div class="hours-row"><span class="hours-day">Monday – Saturday</span><span class="hours-time">9:00 AM – 5:00 PM <span id="openStatus"></span></span></div>
+      <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time"><span class="closed-badge">Closed</span></span></div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
+        <div style="font-size:0.82rem;color:var(--text2);margin-bottom:8px;">📍 Address</div>
+        <div style="font-size:0.88rem;color:var(--text);font-weight:500;line-height:1.5;">No. 1564/4D, Chengalpet Road,<br>Sriperumbudur, Kanchipuram – 602105</div>
+      </div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+        <div style="font-size:0.82rem;color:var(--text2);margin-bottom:8px;">📞 Phone</div>
+        <a href="tel:+919444012443" style="font-size:0.9rem;font-weight:700;color:var(--primary);text-decoration:none;">+91 94440 12443</a>
+        <a href="tel:04114371022" style="font-size:0.88rem;color:var(--text2);text-decoration:none;display:block;margin-top:4px;">044-3710220</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker">
+    <span class="ticker-item"><span class="ticker-dot"></span> Cataract Surgery</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> LASIK Treatment</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Glaucoma Care</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Retina Treatment</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Squint Surgery</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Cornea Specialist</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Dry Eye Clinic</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Contact Lens Prescription</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Wheelchair Accessible</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Cashless & Online Payments</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Cataract Surgery</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> LASIK Treatment</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Glaucoma Care</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Retina Treatment</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Squint Surgery</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Cornea Specialist</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Dry Eye Clinic</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Contact Lens Prescription</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Wheelchair Accessible</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Cashless & Online Payments</span>
+  </div>
+</div>
+
+<!-- INFO STRIP -->
+<div id="contact">
+  <div class="info-strip">
+    <div class="info-item">
+      <div class="info-icon">📍</div>
+      <div>
+        <h4>Address</h4>
+        <p>No. 1564/4D, Chengalpet Road<br>Sriperumbudur, Kanchipuram – 602105</p>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">📞</div>
+      <div>
+        <h4>Phone</h4>
+        <p><a href="tel:+919444012443">+91 94440 12443</a></p>
+        <p><a href="tel:04114371022">044-37102220</a></p>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">🕐</div>
+      <div>
+        <h4>Working Hours</h4>
+        <p>Mon – Sat: 9:00 AM – 5:00 PM</p>
+        <p style="color:var(--text2);font-size:0.82rem;">Sunday: Closed</p>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">💬</div>
+      <div>
+        <h4>WhatsApp</h4>
+        <p><a href="https://wa.me/919444012443" target="_blank">+91 94440 12443</a></p>
+        <p style="font-size:0.8rem;color:var(--text2);">Quick booking via chat</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-img-bg">👁️
+        <div class="about-float-badge">
+          <strong>4.7★</strong>
+          Justdial Rating
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-header">
+        <div class="section-tag">About Us</div>
+        <h2 class="section-title">Trusted Eye Care<br><span>Since 1994</span></h2>
+        <p class="section-sub">For over 31 years, Deepika Eye Care Hospital has been Sriperumbudur's premier destination for ophthalmology. Led by Dr. J.P. David and Dr. Venkatesan, we combine expertise with genuine compassion to restore and protect your vision.</p>
+      </div>
+      <div class="about-features">
+        <div class="about-feat">
+          <span class="feat-icon">🏥</span>
+          <div class="feat-text"><strong>31 Years Experience</strong><span>Established 1994 in Sriperumbudur</span></div>
+        </div>
+        <div class="about-feat">
+          <span class="feat-icon">♿</span>
+          <div class="feat-text"><strong>Fully Accessible</strong><span>Wheelchair-friendly facility</span></div>
+        </div>
+        <div class="about-feat">
+          <span class="feat-icon">💳</span>
+          <div class="feat-text"><strong>Cashless Payments</strong><span>Card, UPI, Net Banking accepted</span></div>
+        </div>
+        <div class="about-feat">
+          <span class="feat-icon">🔬</span>
+          <div class="feat-text"><strong>Modern Equipment</strong><span>Advanced diagnostic tools</span></div>
+        </div>
+        <div class="about-feat">
+          <span class="feat-icon">💰</span>
+          <div class="feat-text"><strong>Affordable Care</strong><span>Consultation from ₹200</span></div>
+        </div>
+        <div class="about-feat">
+          <span class="feat-icon">🚗</span>
+          <div class="feat-text"><strong>Parking Available</strong><span>Convenient in-car parking</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="section-header" style="text-align:center;">
+    <div class="section-tag">Our Services</div>
+    <h2 class="section-title">Comprehensive <span>Eye Care</span></h2>
+    <p class="section-sub" style="margin:0 auto;">From routine eye exams to complex surgical procedures, we offer a full spectrum of ophthalmology services.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <span class="service-icon">🔭</span>
+      <h3>Comprehensive Eye Exam</h3>
+      <p>Full vision assessment including refraction, eye pressure testing and retinal examination.</p>
+    </div>
+    <div class="service-card fade-in">
+      <span class="service-icon">⚡</span>
+      <h3>Cataract Surgery</h3>
+      <p>Advanced cataract removal with affordable surgery packages and quick recovery.</p>
+    </div>
+    <div class="service-card fade-in">
+      <span class="service-icon">✨</span>
+      <h3>LASIK & Refractive</h3>
+      <p>Laser vision correction for myopia, hyperopia and astigmatism.</p>
+    </div>
+    <div class="service-card fade-in">
+      <span class="service-icon">👁️</span>
+      <h3>Retina Treatment</h3>
+      <p>Diagnosis and treatment of retinal disorders including diabetic retinopathy and macular degeneration.</p>
+    </div>
+    <div class="service-card fade-in">
+      <span class="service-icon">🔵</span>
+      <h3>Glaucoma Management</h3>
+      <p>Early detection and management of glaucoma to protect your optic nerve and vision.</p>
+    </div>
+    <div class="service-card fade-in">
+      <span class="service-icon">🌊</span>
+      <h3>Dry Eye Clinic</h3>
+      <p>Specialized treatment for dry eye syndrome using latest therapies and lubricants.</p>
+    </div>
+    <div class="service-card fade-in">
+      <span class="service-icon">🔀</span>
+      <h3>Squint Surgery</h3>
+      <p>Surgical correction of strabismus (squint) for children and adults.</p>
+    </div>
+    <div class="service-card fade-in">
+      <span class="service-icon">🩺</span>
+      <h3>Corneal Ulcer Care</h3>
+      <p>Expert diagnosis and treatment of corneal infections and ulcers.</p>
+    </div>
+    <div class="service-card fade-in">
+      <span class="service-icon">👓</span>
+      <h3>Contact Lens Prescription</h3>
+      <p>Fitting and prescription of contact lenses with detailed follow-up care.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section id="doctors">
+  <div class="section-header" style="text-align:center;">
+    <div class="section-tag">Our Team</div>
+    <h2 class="section-title">Meet Our <span>Specialists</span></h2>
+    <p class="section-sub" style="margin:0 auto;">Experienced, compassionate ophthalmologists dedicated to protecting and restoring your vision.</p>
+  </div>
+  <div class="doctors-grid">
+    <div class="doctor-card fade-in">
+      <div class="doctor-avatar">👨‍⚕️</div>
+      <div class="doctor-info">
+        <h3>Dr. J.P. David</h3>
+        <div class="doctor-spec">Chief Ophthalmologist</div>
+        <div class="doctor-exp">Founder & Lead Surgeon · 31+ Years Experience</div>
+      </div>
+    </div>
+    <div class="doctor-card fade-in">
+      <div class="doctor-avatar">👨‍⚕️</div>
+      <div class="doctor-info">
+        <h3>Dr. Venkatesan</h3>
+        <div class="doctor-spec">Eye Surgeon</div>
+        <div class="doctor-exp">Cataract & Refractive Surgery Specialist</div>
+      </div>
+    </div>
+    <div class="doctor-card fade-in">
+      <div class="doctor-avatar">👩‍⚕️</div>
+      <div class="doctor-info">
+        <h3>Ophthalmology Team</h3>
+        <div class="doctor-spec">Multi-Specialty Eye Care</div>
+        <div class="doctor-exp">Experienced team in retina, cornea & paediatric eye care</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section id="appointment" class="appt-bg">
+  <div class="appt-grid">
+    <div class="appt-info">
+      <div class="section-tag" style="background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.25);">Book Appointment</div>
+      <h2 class="section-title">Ready to See<br>the World Clearly?</h2>
+      <p class="section-sub">Book your appointment in seconds. Our team will confirm your slot and guide you through the visit.</p>
+      <div class="appt-contact-btns">
+        <a href="tel:+919444012443" class="appt-btn-contact">
+          <span class="icon">📞</span>
+          <div><div class="label">Call Us</div><div class="value">+91 94440 12443</div></div>
+        </a>
+        <a href="tel:04114371022" class="appt-btn-contact">
+          <span class="icon">☎️</span>
+          <div><div class="label">Landline</div><div class="value">044-37102220</div></div>
+        </a>
+        <a href="https://wa.me/919444012443?text=Hello%2C%20I%20want%20to%20book%20an%20appointment." target="_blank" class="appt-btn-contact" style="border-color:rgba(37,211,102,0.5);">
+          <span class="icon">💬</span>
+          <div><div class="label">WhatsApp</div><div class="value">+91 94440 12443</div></div>
+        </a>
+      </div>
+    </div>
+    <div class="appt-form">
+      <h3>📅 Book an Appointment</h3>
+      <div class="form-row">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="fname" placeholder="Your full name"></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Service *</label>
+          <select id="fservice">
+            <option value="">Select a service</option>
+            <option>Eye Examination</option>
+            <option>Cataract Surgery Consult</option>
+            <option>LASIK Consultation</option>
+            <option>Retina Treatment</option>
+            <option>Glaucoma Check</option>
+            <option>Dry Eye Clinic</option>
+            <option>Squint Surgery Consult</option>
+            <option>Contact Lens Prescription</option>
+            <option>Corneal Ulcer</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Preferred Date *</label><input type="date" id="fdate"></div>
+      </div>
+      <div class="form-group">
+        <label>Preferred Time</label>
+        <select id="ftime">
+          <option>9:00 AM</option><option>9:30 AM</option><option>10:00 AM</option>
+          <option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
+          <option>12:00 PM</option><option>2:00 PM</option><option>2:30 PM</option>
+          <option>3:00 PM</option><option>3:30 PM</option><option>4:00 PM</option><option>4:30 PM</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message (Optional)</label><textarea id="fmsg" placeholder="Briefly describe your concern..."></textarea></div>
+      <button class="form-submit" onclick="submitForm()">✅ Confirm Appointment</button>
+      <div class="success-msg" id="successMsg">🎉 Appointment request sent! We'll call you to confirm your slot.</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section style="background:var(--bg);">
+  <div class="section-header" style="text-align:center;">
+    <div class="section-tag">Patient Reviews</div>
+    <h2 class="section-title">What Patients <span>Say</span></h2>
+    <p class="section-sub" style="margin:0 auto;">Rated 4.7/5 on Justdial with 1,494+ reviews from happy patients.</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-in">
+      <div class="review-badge">Verified</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The staff and faculty were very nice and polite. It was a good experience — very hygienic and doctors are excellent. Consultation fee is very reasonable."</p>
+      <div class="review-author">
+        <div class="review-avatar">A</div>
+        <div><div class="review-author-name">Ananya R.</div><div class="review-author-date">Sriperumbudur</div></div>
+      </div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="review-badge">Verified</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Dr. Venkatesan is a good surgeon who provides quality treatment and explains the condition very well. Surgery packages are truly affordable!"</p>
+      <div class="review-author">
+        <div class="review-avatar">D</div>
+        <div><div class="review-author-name">David S.</div><div class="review-author-date">Sriperumbudur</div></div>
+      </div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="review-badge">Verified</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"After consulting at Deepika Eye Care, the doctor thoroughly checked my eyes, gave clear suggestions and prescribed the right medicines. Highly satisfied!"</p>
+      <div class="review-author">
+        <div class="review-avatar">K</div>
+        <div><div class="review-author-name">Kavitha M.</div><div class="review-author-date">Kanchipuram</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-section">
+  <div class="section-header" style="text-align:center;">
+    <div class="section-tag">Find Us</div>
+    <h2 class="section-title">Our <span>Location</span></h2>
+  </div>
+  <div class="map-wrap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5!2d79.938!3d12.951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52f4e3e3e3e3e3%3A0x0!2sDeepika+Eye+Care+Hospital%2C+Sriperumbudur!5e0!3m2!1sen!2sin!4v1" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:14px;">
+        <div class="eye-icon" style="background:linear-gradient(135deg,#1a6ec7,#00b4d8);">👁️</div>
+        <div class="nav-logo-text">
+          <strong style="color:#fff;">Deepika Eye Care</strong>
+          <span>Hospital · Est. 1994</span>
+        </div>
+      </div>
+      <p>Sriperumbudur's most trusted eye care hospital for 31 years. Providing comprehensive ophthalmology services with cutting-edge technology and heartfelt compassion.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Eye Examination</a>
+      <a href="#services">Cataract Surgery</a>
+      <a href="#services">LASIK</a>
+      <a href="#services">Retina Treatment</a>
+      <a href="#services">Glaucoma Care</a>
+      <a href="#services">Squint Surgery</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#about">About Us</a>
+      <a href="#doctors">Our Doctors</a>
+      <a href="#appointment">Book Appointment</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>No. 1564/4D, Chengalpet Road, Sriperumbudur – 602105</p>
+      <a href="tel:+919444012443">+91 94440 12443</a>
+      <a href="tel:04114371022">044-37102220</a>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:8px;">Mon–Sat: 9 AM – 5 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Deepika Eye Care Hospital, Sriperumbudur. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="tel:+919444012443" class="social-btn">📞</a>
+      <a href="https://wa.me/919444012443" target="_blank" class="social-btn">💬</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-btns">
+  <a href="https://wa.me/919444012443?text=Hello%2C%20I%20want%20to%20book%20an%20appointment." target="_blank" class="float-btn float-wa">
+    <span class="float-btn-icon">💬</span><span>WhatsApp</span>
+  </a>
+  <a href="tel:+919444012443" class="float-btn float-call">
+    <span class="float-btn-icon">📞</span><span>Call Now</span>
+  </a>
+</div>
+
+<script>
+  // Theme toggle
+  function toggleTheme() {
+    const html = document.documentElement;
+    const btn = document.getElementById('themeBtn');
+    if (html.getAttribute('data-theme') === 'light') {
+      html.setAttribute('data-theme', 'dark');
+      btn.textContent = '☀️';
+    } else {
+      html.setAttribute('data-theme', 'light');
+      btn.textContent = '🌙';
+    }
+  }
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Open/Close status
+  function setOpenStatus() {
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun, 6=Sat
+    const h = now.getHours();
+    const open = day >= 1 && day <= 6 && h >= 9 && h < 17;
+    const el = document.getElementById('openStatus');
+    if (el) el.innerHTML = open
+      ? '<span class="open-badge">Open Now</span>'
+      : '<span class="closed-badge">Closed</span>';
+  }
+  setOpenStatus();
+
+  // Set min date on form
+  const dateInput = document.getElementById('fdate');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  }
+
+  // Form submission
+  function submitForm() {
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const service = document.getElementById('fservice').value;
+    const date = document.getElementById('fdate').value;
+    if (!name || !phone || !service || !date) {
+      alert('Please fill in all required fields (Name, Phone, Service, Date).');
+      return;
+    }
+    // Simulate WhatsApp message
+    const msg = encodeURIComponent(`Hello, I'd like to book an appointment at Deepika Eye Care Hospital.\n\nName: ${name}\nPhone: ${phone}\nService: ${service}\nDate: ${date}\n\nPlease confirm my appointment.`);
+    window.open(`https://wa.me/919444012443?text=${msg}`, '_blank');
+    document.getElementById('successMsg').style.display = 'block';
+    setTimeout(() => { document.getElementById('successMsg').style.display='none'; }, 6000);
+  }
+
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.style.animationPlayState = 'running'; });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+
+  // Navbar shadow on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.boxShadow = window.scrollY > 30 ? '0 4px 24px rgba(0,0,0,0.12)' : 'none';
+  });
+</script>
+</body>
+</html>
